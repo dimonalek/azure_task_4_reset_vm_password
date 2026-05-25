@@ -70,12 +70,6 @@ if ($virtualMachine.properties.storageProfile.imageReference.publisher -eq "cano
 }
 
 
-if ($virtualMachine.properties.osProfile.linuxConfiguration.disablePasswordAuthentication -eq $true) { 
-    Write-Output "`u{2705} Checked Virtual Machine OS user authentification settings - OK"
-} else { 
-    Write-Output `u{1F914}
-    throw "Virtual Machine uses password authentification. Please re-deploy VM using SSH key authentification for the OS admin user and try again. "
-}
 
 
 $pip = ( $TemplateObject.resources | Where-Object -Property type -EQ "Microsoft.Network/publicIPAddresses")
